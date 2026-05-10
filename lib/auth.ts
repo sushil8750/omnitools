@@ -29,10 +29,10 @@ export const authOptions: NextAuthOptions = {
     })
   ],
   callbacks: {
-    async session({ session, token }) {
-      if (session.user) {
-        (session.user as any).id = token.sub
-        (session.user as any).plan = "free" // Default plan
+    async session({ session, token }: any) {
+      if (session?.user) {
+        session.user.id = token?.sub
+        session.user.plan = "free"
       }
       return session
     },

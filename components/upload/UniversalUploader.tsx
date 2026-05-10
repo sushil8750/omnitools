@@ -126,7 +126,7 @@ export function UniversalUploader({
           >
             <div className="flex items-center justify-between px-2">
               <h4 className="text-sm font-bold flex items-center gap-2">
-                Queue <Badge variant="primary" className="h-5 min-w-[20px] p-0 flex items-center justify-center rounded-full text-[10px]">{files.length}</Badge>
+                Queue <Badge variant="default" className="h-5 min-w-[20px] p-0 flex items-center justify-center rounded-full text-[10px]">{files.length}</Badge>
               </h4>
               <Button variant="ghost" size="sm" onClick={clearFiles} className="text-xs h-7 text-destructive hover:text-destructive hover:bg-destructive/10">
                 <Trash2 size={12} className="mr-2" /> Clear All

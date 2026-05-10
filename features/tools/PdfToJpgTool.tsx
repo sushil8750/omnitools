@@ -15,6 +15,7 @@ export function PdfToJpgTool({ faqs }: { faqs?: { q: string, a: string }[] }) {
     >
       <div className="space-y-12">
         <UniversalUploader 
+          onFilesChange={() => {}}
           accept={{ 'application/pdf': ['.pdf'] }}
         />
         <div className="flex justify-center">

@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import { Navbar } from "@/components/shared/navbar"
 import { Footer } from "@/components/shared/footer"
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
 import { Search, Home, ArrowLeft } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 export default function NotFound() {
   return (
@@ -26,16 +27,18 @@ export default function NotFound() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button asChild size="lg" className="rounded-full px-12 h-14 text-lg gap-2 shadow-xl">
-              <Link href="/">
-                <Home size={20} /> Back to Home
-              </Link>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="rounded-full px-12 h-14 text-lg gap-2">
-              <Link href="/tools">
-                Explore All Tools <ArrowLeft size={20} className="rotate-180" />
-              </Link>
-            </Button>
+            <Link 
+              href="/" 
+              className={cn(buttonVariants({ size: "lg" }), "rounded-full px-12 h-14 text-lg gap-2 shadow-xl")}
+            >
+              <Home size={20} /> Back to Home
+            </Link>
+            <Link 
+              href="/tools" 
+              className={cn(buttonVariants({ variant: "outline", size: "lg" }), "rounded-full px-12 h-14 text-lg gap-2")}
+            >
+              Explore All Tools <ArrowLeft size={20} className="rotate-180" />
+            </Link>
           </div>
         </div>
       </main>

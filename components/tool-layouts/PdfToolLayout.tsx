@@ -9,15 +9,17 @@ interface PdfToolLayoutProps {
   title: string
   description: string
   icon?: any
+  faqs?: { q: string, a: string }[]
 }
 
-export function PdfToolLayout({ children, title, description, icon = FileText }: PdfToolLayoutProps) {
+export function PdfToolLayout({ children, title, description, icon = FileText, faqs }: PdfToolLayoutProps) {
   return (
     <BaseToolLayout 
       title={title} 
       description={description} 
       category="PDF TOOLS" 
       icon={icon}
+      faqs={faqs}
     >
       {children}
       

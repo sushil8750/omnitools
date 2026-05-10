@@ -57,7 +57,7 @@ export function MergePdfTool({ faqs }: { faqs?: { q: string, a: string }[] }) {
 
   const handleDownload = () => {
     if (!result) return
-    const blob = new Blob([result], { type: 'application/pdf' })
+    const blob = new Blob([result as any], { type: 'application/pdf' })
     const url = URL.createObjectURL(blob)
     const link = document.createElement('a')
     link.href = url

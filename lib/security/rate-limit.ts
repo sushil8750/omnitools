@@ -8,7 +8,7 @@ const LIMIT = 10; // requests
 const DURATION = 60 * 1000; // 1 minute
 
 export async function rateLimit(request: NextRequest) {
-  const ip = request.ip ?? '127.0.0.1';
+  const ip = request.headers.get('x-forwarded-for') || '127.0.0.1';
   const now = Date.now();
   
   const userRate = rateLimitMap.get(ip) || { count: 0, lastReset: now };

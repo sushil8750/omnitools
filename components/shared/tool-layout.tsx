@@ -64,7 +64,7 @@ export function ToolLayout({
           <div className="max-w-4xl mx-auto mt-24">
             <Separator className="mb-12" />
             <h2 className="text-3xl font-bold mb-8">Frequently Asked Questions</h2>
-            <Accordion type="single" collapsible className="w-full">
+            <Accordion className="w-full">
               {faqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`}>
                   <AccordionTrigger className="text-left font-medium">{faq.question}</AccordionTrigger>

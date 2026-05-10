@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { TOOLS } from "@/config/tools";
-import { getToolMetadata, generateSchema } from "@/lib/seo/metadata";
+import { getToolMetadata, generateSchema, constructMetadata } from "@/lib/seo/metadata";
 import { ToolLayout } from "@/components/shared/tool-layout";
 import { FEATURES } from "@/config/features";
 

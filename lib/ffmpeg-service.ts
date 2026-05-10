@@ -28,5 +28,5 @@ export async function convertVideoToAudio(file: File): Promise<Blob> {
   await ffmpeg.exec(['-i', inputName, '-vn', '-ab', '128k', '-ar', '44100', '-y', outputName])
   
   const data = await ffmpeg.readFile(outputName)
-  return new Blob([data], { type: 'audio/mp3' })
+  return new Blob([data as any], { type: 'audio/mp3' })
 }

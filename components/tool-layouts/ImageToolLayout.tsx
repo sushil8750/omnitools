@@ -9,15 +9,17 @@ interface ImageToolLayoutProps {
   title: string
   description: string
   icon?: any
+  faqs?: { q: string, a: string }[]
 }
 
-export function ImageToolLayout({ children, title, description, icon = ImageIcon }: ImageToolLayoutProps) {
+export function ImageToolLayout({ children, title, description, icon = ImageIcon, faqs }: ImageToolLayoutProps) {
   return (
     <BaseToolLayout 
       title={title} 
       description={description} 
       category="IMAGE TOOLS" 
       icon={icon}
+      faqs={faqs}
     >
       {children}
       

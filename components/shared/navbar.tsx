@@ -21,10 +21,10 @@ import { GlobalSearch } from "@/components/search/GlobalSearch"
 import { cn } from "@/lib/utils"
 
 const navItems = [
-  { name: "All Tools", href: "/tools" },
-  { name: "Guides", href: "/guides/how-to-merge-pdf-files-online" },
-  { name: "Templates", href: "/templates" },
-  { name: "Blog", href: "/blog" },
+  { name: "All Tools", href: "/tools", icon: Settings },
+  { name: "Guides", href: "/guides/how-to-merge-pdf-files-online", icon: FileText },
+  { name: "Templates", href: "/templates", icon: Calculator },
+  { name: "Blog", href: "/blog", icon: Code },
 ]
 
 export function Navbar() {

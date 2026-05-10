@@ -15,6 +15,7 @@ export function JpgToPdfTool({ faqs }: { faqs?: { q: string, a: string }[] }) {
     >
       <div className="space-y-12">
         <UniversalUploader 
+          onFilesChange={() => {}}
           accept={{ 'image/jpeg': ['.jpg', '.jpeg'], 'image/png': ['.png'] }}
         />
         <div className="flex justify-center">
