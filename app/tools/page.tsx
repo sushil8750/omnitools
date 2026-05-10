@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useSearchParams } from "next/navigation"
 import { motion } from "framer-motion"
 import { Navbar } from "@/components/shared/navbar"
 import { Footer } from "@/components/shared/footer"
@@ -17,7 +18,6 @@ import {
   Music,
   Braces,
   FileJson,
-  Type
 } from "lucide-react"
 
 const ALL_TOOLS = [
@@ -27,6 +27,8 @@ const ALL_TOOLS = [
       { title: "Merge PDF", description: "Combine multiple PDFs into one.", icon: FileText, href: "/pdf-tools/merge-pdf", color: "bg-red-500" },
       { title: "Split PDF", description: "Extract pages from your PDF.", icon: FileText, href: "/pdf-tools/split-pdf", color: "bg-red-400" },
       { title: "Compress PDF", description: "Reduce PDF file size.", icon: FileText, href: "/pdf-tools/compress-pdf", color: "bg-red-600" },
+      { title: "JPG to PDF", description: "Convert images to PDF.", icon: FileText, href: "/pdf-tools/jpg-to-pdf", color: "bg-red-300" },
+      { title: "PDF to JPG", description: "Convert PDF pages to images.", icon: FileText, href: "/image-tools/pdf-to-jpg", color: "bg-red-700" },
     ]
   },
   {
@@ -42,6 +44,7 @@ const ALL_TOOLS = [
     tools: [
       { title: "LaTeX Editor", description: "Write LaTeX with live preview.", icon: Code, href: "/developer-tools/latex-to-pdf", color: "bg-purple-500" },
       { title: "JSON Formatter", description: "Prettify and validate JSON.", icon: Braces, href: "/developer-tools/json-formatter", color: "bg-purple-600" },
+      { title: "SQL Formatter", description: "Format and beautify SQL.", icon: Code, href: "/developer-tools/sql-formatter", color: "bg-purple-700" },
       { title: "CSV to JSON", description: "Convert data formats.", icon: FileJson, href: "/converter-tools/csv-to-json", color: "bg-purple-400" },
     ]
   },
@@ -55,14 +58,15 @@ const ALL_TOOLS = [
   {
     category: "Calculators",
     tools: [
-      { title: "Length", description: "Metric to Imperial conversion.", icon: Calculator, href: "/calculators/length-converter", color: "bg-orange-500" },
-      { title: "Weight", description: "KG to Pounds and more.", icon: Calculator, href: "/calculators/weight-converter", color: "bg-orange-600" },
+      { title: "Length Converter", description: "Metric to Imperial conversion.", icon: Calculator, href: "/calculators/length-converter", color: "bg-orange-500" },
+      { title: "Weight Converter", description: "KG to Pounds and more.", icon: Calculator, href: "/calculators/weight-converter", color: "bg-orange-600" },
     ]
   }
 ]
 
-export default function AllToolsPage() {
-  const [search, setSearch] = React.useState("")
+function ToolsContent() {
+  const searchParams = useSearchParams()
+  const [search, setSearch] = React.useState(searchParams?.get("search") ?? "")
 
   const filteredTools = ALL_TOOLS.map(cat => ({
     ...cat,
@@ -117,5 +121,21 @@ export default function AllToolsPage() {
 
       <Footer />
     </div>
+  )
+}
+
+export default function AllToolsPage() {
+  return (
+    <React.Suspense fallback={
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow flex items-center justify-center">
+          <div className="text-muted-foreground animate-pulse">Loading tools...</div>
+        </main>
+        <Footer />
+      </div>
+    }>
+      <ToolsContent />
+    </React.Suspense>
   )
 }

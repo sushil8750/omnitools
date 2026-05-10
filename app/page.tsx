@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { 
   FileText, 
@@ -14,6 +15,7 @@ import {
   MoveRight,
   Sparkles
 } from "lucide-react"
+import Link from "next/link"
 import { Navbar } from "@/components/shared/navbar"
 import { Footer } from "@/components/shared/footer"
 import { ToolCard } from "@/components/shared/tool-card"
@@ -67,6 +69,14 @@ const popularTools = [
 ]
 
 export default function Home() {
+  const router = useRouter()
+  const [heroSearch, setHeroSearch] = React.useState("")
+
+  const handleHeroSearch = () => {
+    const q = heroSearch.trim()
+    router.push(q ? `/tools?search=${encodeURIComponent(q)}` : "/tools")
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -99,10 +109,13 @@ export default function Home() {
                   <Input 
                     placeholder="Search for any tool..." 
                     className="h-14 pl-12 rounded-full border-primary/20 focus-visible:ring-primary shadow-lg"
+                    value={heroSearch}
+                    onChange={(e) => setHeroSearch(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleHeroSearch()}
                   />
                   <Zap className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" size={20} />
                 </div>
-                <Button className="h-14 px-8 rounded-full shadow-lg group">
+                <Button className="h-14 px-8 rounded-full shadow-lg group" onClick={handleHeroSearch}>
                   Explore All
                   <MoveRight className="ml-2 transition-transform group-hover:translate-x-1" size={18} />
                 </Button>
@@ -119,9 +132,11 @@ export default function Home() {
                 <h2 className="text-3xl font-bold mb-2">Popular Tools</h2>
                 <p className="text-muted-foreground">The most used utilities by our community.</p>
               </div>
-              <Button variant="ghost" className="hidden sm:flex gap-2">
-                View All Tools <MoveRight size={16} />
-              </Button>
+              <Link href="/tools">
+                <Button variant="ghost" className="hidden sm:flex gap-2">
+                  View All Tools <MoveRight size={16} />
+                </Button>
+              </Link>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -173,9 +188,11 @@ export default function Home() {
                 Join thousands of users who trust OmniTools for their daily tasks. 
                 Free to use, forever.
               </p>
-              <Button size="lg" variant="secondary" className="rounded-full px-12 h-14 text-lg">
-                Start Using Now
-              </Button>
+              <Link href="/tools">
+                <Button size="lg" variant="secondary" className="rounded-full px-12 h-14 text-lg">
+                  Start Using Now
+                </Button>
+              </Link>
             </div>
           </div>
         </section>

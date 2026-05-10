@@ -260,7 +260,8 @@ export function LatexEditor() {
     toast.success("Code copied to clipboard")
   }
 
-  const handleTemplateChange = (val: string) => {
+  const handleTemplateChange = (val: string | null) => {
+    if (!val) return
     setCode(TEMPLATES[val] ?? "")
     setPdfUrl(null)
     setPdfBlob(null)
