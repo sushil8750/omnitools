@@ -1,7 +1,6 @@
 {
   "version": 2,
   "framework": "nextjs",
-  "regions": ["cle1", "hnd1", "bom1"],
   "headers": [
     {
       "source": "/(.*)",
