@@ -36,8 +36,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const guide = GUIDES.find(g => g.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const guide = GUIDES.find(g => g.slug === slug);
   if (!guide) return constructMetadata();
   
   return constructMetadata({
@@ -46,8 +47,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   });
 }
 
-export default function GuidePage({ params }: { params: { slug: string } }) {
-  const guide = GUIDES.find(g => g.slug === params.slug);
+export default async function GuidePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const guide = GUIDES.find(g => g.slug === slug);
   if (!guide) notFound();
 
   return (

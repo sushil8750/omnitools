@@ -49,8 +49,11 @@ export function constructMetadata({
   };
 }
 
-export function getToolMetadata(slug: string): Metadata {
-  const tool = TOOLS.find((t) => t.slug === slug);
+export function getToolMetadata(toolOrSlug: string | Tool): Metadata {
+  const tool = typeof toolOrSlug === "string" 
+    ? TOOLS.find((t) => t.slug === toolOrSlug)
+    : toolOrSlug;
+    
   if (!tool) return constructMetadata();
 
   return constructMetadata({

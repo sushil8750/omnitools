@@ -1,10 +1,7 @@
 import { ToolLayout } from "@/components/shared/tool-layout"
 import { LatexEditor } from "@/features/latex/latex-editor"
 
-export const metadata = {
-  title: "LaTeX to PDF Converter | OmniTools",
-  description: "Online LaTeX editor with live PDF preview. Compile .tex files into professional PDF documents instantly.",
-}
+
 
 export default function LatexToPdfPage() {
   return (

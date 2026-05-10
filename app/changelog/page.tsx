@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Zap, Sparkles, Rocket, Bug } from "lucide-react";
 
 const UPDATES = [

@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { rateLimit } from '@/lib/security/rate-limit';
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   // Only rate limit API routes and processing routes
   if (request.nextUrl.pathname.startsWith('/api') || 
       request.nextUrl.pathname.includes('/process')) {

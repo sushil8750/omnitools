@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Zap, Github, Twitter, Linkedin } from "lucide-react"
+import { Zap, Code, Send, ExternalLink } from "lucide-react"
 
 const footerLinks = {
   Tools: [
@@ -15,9 +15,9 @@ const footerLinks = {
     { name: "Contact", href: "/contact" },
   ],
   Community: [
-    { name: "GitHub", href: "https://github.com", icon: Github },
-    { name: "Twitter", href: "https://twitter.com", icon: Twitter },
-    { name: "LinkedIn", href: "https://linkedin.com", icon: Linkedin },
+    { name: "GitHub", href: "https://github.com", icon: Code },
+    { name: "Twitter", href: "https://twitter.com", icon: Send },
+    { name: "LinkedIn", href: "https://linkedin.com", icon: ExternalLink },
   ],
 }
 

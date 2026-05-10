@@ -42,8 +42,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const comparison = COMPARISONS.find(c => c.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const comparison = COMPARISONS.find(c => c.slug === slug);
   if (!comparison) return constructMetadata();
   
   return constructMetadata({
@@ -52,8 +53,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   });
 }
 
-export default function ComparisonPage({ params }: { params: { slug: string } }) {
-  const comp = COMPARISONS.find(c => c.slug === params.slug);
+export default async function ComparisonPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const comp = COMPARISONS.find(c => c.slug === slug);
   if (!comp) notFound();
 
   return (

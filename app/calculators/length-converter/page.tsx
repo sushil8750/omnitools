@@ -55,7 +55,7 @@ export default function LengthConverterPage() {
                     onChange={(e) => setValue(e.target.value)}
                     className="h-16 text-2xl font-bold rounded-2xl border-muted-foreground/20"
                   />
-                  <Select value={fromUnit} onValueChange={setFromUnit}>
+                  <Select value={fromUnit} onValueChange={(v) => v && setFromUnit(v)}>
                     <SelectTrigger className="h-12 rounded-xl">
                       <SelectValue />
                     </SelectTrigger>
@@ -74,7 +74,7 @@ export default function LengthConverterPage() {
                   <div className="h-16 flex items-center px-4 text-2xl font-bold bg-muted/30 rounded-2xl text-primary border border-transparent">
                     {result}
                   </div>
-                  <Select value={toUnit} onValueChange={setToUnit}>
+                  <Select value={toUnit} onValueChange={(v) => v && setToUnit(v)}>
                     <SelectTrigger className="h-12 rounded-xl">
                       <SelectValue />
                     </SelectTrigger>

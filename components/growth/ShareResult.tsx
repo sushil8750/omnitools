@@ -4,9 +4,9 @@ import * as React from "react"
 import { motion } from "framer-motion"
 import { 
   Share2, 
-  Twitter, 
-  Facebook, 
-  Linkedin, 
+  Send, 
+  Globe, 
+  ExternalLink, 
   Link as LinkIcon,
   CheckCircle2,
   Copy
@@ -40,13 +40,13 @@ export function ShareResult({ toolName }: { toolName: string }) {
         
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Button variant="outline" size="icon" className="h-12 w-12 rounded-full hover:bg-sky-500 hover:text-white transition-colors" onClick={shareOnTwitter}>
-            <Twitter size={20} />
+            <Send size={20} />
           </Button>
           <Button variant="outline" size="icon" className="h-12 w-12 rounded-full hover:bg-blue-600 hover:text-white transition-colors">
-            <Facebook size={20} />
+            <Globe size={20} />
           </Button>
           <Button variant="outline" size="icon" className="h-12 w-12 rounded-full hover:bg-blue-700 hover:text-white transition-colors">
-            <Linkedin size={20} />
+            <ExternalLink size={20} />
           </Button>
           <Button variant="outline" size="icon" className="h-12 w-12 rounded-full hover:bg-primary hover:text-white transition-colors" onClick={copyToClipboard}>
             <LinkIcon size={20} />
